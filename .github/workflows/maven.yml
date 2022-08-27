@@ -36,8 +36,16 @@ jobs:
          git add picture/*
          git add docs/*
          git commit -m "update readme.md"
-    - name: Push changes
-      uses:  ad-m/github-push-action@master
-      with:
-         github_token: ${{ secrets.MY_GIT_TOKEN }}
-         branch: main
+         
+    #- name: Push changes
+    #  uses:  ad-m/github-push-action@master
+    #  with:
+    #     github_token: ${{ secrets.MY_GIT_TOKEN }}
+    #     branch: main
+         
+    - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.MY_GIT_TOKEN }}
+          publish_branch: main
+          publish_dir: ./
